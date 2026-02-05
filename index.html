@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETC Café — Craft. Ritual. Experience.</title>
+    <meta name="description"
+        content="ETC Café - An international luxury café in Cubbonpet, Bangalore where every cup is a ceremony, every moment is intentional.">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['Cormorant', 'serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        cream: {
+                            50: '#fafaf5',
+                            100: '#f5f5f0',
+                            200: '#e8e4dc',
+                        },
+                        coffee: {
+                            300: '#D4A574',
+                            400: '#C49660',
+                            500: '#8B7355',
+                            600: '#6d5a43',
+                            700: '#4a3c2d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        :root {
+            --font-heading: 'Cormorant', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            cursor: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                cursor: auto;
+            }
+        }
+
+        .logo-text {
+            letter-spacing: 0.25em;
+            font-weight: 400;
+        }
+
+        .header-solid {
+            background-color: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Slow zoom animation for hero */
+        @keyframes slowZoom {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.15);
+            }
+        }
+
+        .animate-slow-zoom {
+            animation: slowZoom 25s ease-in-out infinite alternate;
+        }
+
+        /* Floating animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Pulse glow */
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(212, 165, 116, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(212, 165, 116, 0.4);
+            }
+        }
+
+        .animate-pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-cream-50 text-neutral-800 overflow-x-hidden">
+
+    <!-- Header / Navigation -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
+
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-4 group interactive">
+                <img src="ETC_logo_rounded.png" alt="ETC Café Logo"
+                    class="h-14 md:h-16 w-14 md:w-16 rounded-full object-cover shadow-lg transition-all duration-500 group-hover:shadow-xl group-hover:scale-105 animate-pulse-glow">
+                <h1
+                    class="font-heading text-2xl lg:text-3xl text-neutral-900 logo-text tracking-widest hidden sm:block">
+                    ETC CAFÉ
+                </h1>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-10 lg:space-x-14">
+                <a href="#philosophy"
+                    class="nav-link text-sm uppercase tracking-widest text-neutral-600 hover:text-neutral-900 transition-colors duration-300 font-medium">Philosophy</a>
+                <a href="#offerings"
+                    class="nav-link text-sm uppercase tracking-widest text-neutral-600 hover:text-neutral-900 transition-colors duration-300 font-medium">Offerings</a>
+                <a href="#experience"
+                    class="nav-link text-sm uppercase tracking-widest text-neutral-600 hover:text-neutral-900 transition-colors duration-300 font-medium">Experience</a>
+                <a href="#location"
+                    class="nav-link text-sm uppercase tracking-widest text-neutral-600 hover:text-neutral-900 transition-colors duration-300 font-medium">Visit
+                    Us</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn"
+                class="md:hidden text-neutral-900 focus:outline-none z-50 relative interactive">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path class="menu-icon transition-opacity" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path class="close-icon hidden transition-opacity" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Overlay -->
+        <div id="mobile-menu"
+            class="mobile-menu fixed inset-0 bg-cream-50 z-40 flex items-center justify-center md:hidden">
+            <nav class="flex flex-col items-center space-y-10">
+                <a href="#philosophy"
+                    class="mobile-link text-3xl font-heading uppercase tracking-widest text-neutral-900 hover:text-coffee-500 transition-colors">Philosophy</a>
+                <a href="#offerings"
+                    class="mobile-link text-3xl font-heading uppercase tracking-widest text-neutral-900 hover:text-coffee-500 transition-colors">Offerings</a>
+                <a href="#experience"
+                    class="mobile-link text-3xl font-heading uppercase tracking-widest text-neutral-900 hover:text-coffee-500 transition-colors">Experience</a>
+                <a href="#location"
+                    class="mobile-link text-3xl font-heading uppercase tracking-widest text-neutral-900 hover:text-coffee-500 transition-colors">Visit
+                    Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Parallax -->
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1920&h=1080&fit=crop&q=80"
+                alt="Luxury café interior" class="hero-bg-image w-full h-full object-cover animate-slow-zoom">
+            <!-- Overlay Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-b from-cream-50/70 via-cream-50/50 to-cream-50/80"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-cream-50/30 to-transparent"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="hero-content relative z-10 text-center px-6 max-w-5xl mx-auto pt-20">
+            <div class="fade-in-up">
+                <span class="inline-block text-sm uppercase tracking-[0.3em] text-coffee-500 mb-6 font-medium">Est. 2026
+                    · Bangalore</span>
+            </div>
+
+            <h2
+                class="font-heading text-5xl md:text-7xl lg:text-8xl text-neutral-900 mb-8 tracking-wide fade-in-up delay-100">
+                Craft. Ritual.<br><span class="gradient-text">Experience.</span>
+            </h2>
+
+            <p
+                class="text-lg md:text-xl text-neutral-600 mb-14 max-w-2xl mx-auto leading-relaxed font-light fade-in-up delay-200">
+                An international luxury café where every cup is a ceremony, every moment is intentional.
+            </p>
+
+            <div class="fade-in-up delay-300">
+                <a href="#philosophy"
+                    class="magnetic btn-primary inline-block px-14 py-5 border-2 border-neutral-900 text-neutral-900 text-sm uppercase tracking-widest hover:text-cream-50 transition-colors duration-500 interactive">
+                    Discover ETC Café
+                </a>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 fade-in-up delay-500">
+                <div class="animate-float">
+                    <svg class="w-6 h-10 text-neutral-400" viewBox="0 0 24 40" fill="none" stroke="currentColor">
+                        <rect x="1" y="1" width="22" height="38" rx="11" stroke-width="2" />
+                        <circle cx="12" cy="12" r="3" fill="currentColor" class="animate-bounce" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Philosophy -->
+    <section id="philosophy" class="py-28 lg:py-40 bg-cream-50 relative overflow-hidden">
+        <!-- Decorative Pattern -->
+        <div class="absolute top-0 right-0 w-1/3 h-full dot-pattern opacity-30 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid md:grid-cols-2 gap-16 lg:gap-28 items-center">
+
+                <!-- Image -->
+                <div class="order-2 md:order-1 image-reveal rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&h=1000&fit=crop&q=80"
+                        alt="Coffee craftsmanship" class="w-full h-[500px] md:h-[600px] object-cover hover-lift">
+                </div>
+
+                <!-- Content -->
+                <div class="order-1 md:order-2">
+                    <span
+                        class="inline-block text-sm uppercase tracking-[0.2em] text-coffee-500 mb-4 fade-in-up font-medium">Our
+                        Story</span>
+
+                    <h3
+                        class="font-heading text-4xl lg:text-6xl text-neutral-900 mb-10 tracking-wide fade-in-up delay-100">
+                        Our Philosophy
+                    </h3>
+
+                    <div class="line-accent fade-in-up delay-100" style="margin: 0 0 2rem 0;"></div>
+
+                    <div class="space-y-6 text-neutral-600 text-lg leading-relaxed">
+                        <p class="fade-in-up delay-200">
+                            ETC Café is more than a destination. It is a <strong
+                                class="text-neutral-900">ritual</strong>, a pause, a moment of clarity in a world that
+                            moves too fast.
+                        </p>
+                        <p class="fade-in-up delay-300">
+                            We source the finest beans from ethical farms across three continents. Each roast is
+                            calibrated with precision. Each brew is an act of <strong
+                                class="text-neutral-900">devotion</strong>.
+                        </p>
+                        <p class="fade-in-up delay-400">
+                            Our philosophy is simple: respect the craft, honor the ritual, elevate the <strong
+                                class="text-neutral-900">experience</strong>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Offerings -->
+    <section id="offerings" class="py-28 lg:py-40 bg-neutral-900 text-cream-50 section-dark relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+            <!-- Section Header -->
+            <div class="text-center mb-20">
+                <span
+                    class="inline-block text-sm uppercase tracking-[0.2em] text-coffee-300 mb-4 fade-in-up font-medium">The
+                    Menu</span>
+                <h3 class="font-heading text-4xl lg:text-6xl mb-6 tracking-wide fade-in-up delay-100">Signature
+                    Offerings</h3>
+                <div class="line-accent fade-in-up delay-100"></div>
+                <p class="text-neutral-400 text-lg max-w-2xl mx-auto fade-in-up delay-200">Curated selections that
+                    define the ETC Café experience.</p>
+            </div>
+
+            <!-- Offerings Grid -->
+            <div class="grid md:grid-cols-3 gap-10 lg:gap-14">
+
+                <!-- Offering 1 -->
+                <div
+                    class="offering-card text-center group tilt-card fade-in-up delay-100 p-6 rounded-lg transition-all duration-500">
+                    <div class="mb-8 overflow-hidden rounded-lg image-reveal">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=600&fit=crop&q=80"
+                            alt="Single origin espresso"
+                            class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <h4 class="font-heading text-3xl mb-4 tracking-wide text-cream-50">Single Origin Espresso</h4>
+                    <p class="text-neutral-400 leading-relaxed">Meticulously sourced, precisely roasted. A pure
+                        expression of terroir in every shot.</p>
+                    <div class="mt-6 text-coffee-300 font-medium">₹280</div>
+                </div>
+
+                <!-- Offering 2 -->
+                <div
+                    class="offering-card text-center group tilt-card fade-in-up delay-200 p-6 rounded-lg transition-all duration-500">
+                    <div class="mb-8 overflow-hidden rounded-lg image-reveal">
+                        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=600&fit=crop&q=80"
+                            alt="Pour over ritual"
+                            class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <h4 class="font-heading text-3xl mb-4 tracking-wide text-cream-50">Pour Over Ritual</h4>
+                    <p class="text-neutral-400 leading-relaxed">A ceremony of patience and precision. Brewed to order,
+                        served with intention.</p>
+                    <div class="mt-6 text-coffee-300 font-medium">₹350</div>
+                </div>
+
+                <!-- Offering 3 -->
+                <div
+                    class="offering-card text-center group tilt-card fade-in-up delay-300 p-6 rounded-lg transition-all duration-500">
+                    <div class="mb-8 overflow-hidden rounded-lg image-reveal">
+                        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&h=600&fit=crop&q=80"
+                            alt="Artisan pastries"
+                            class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <h4 class="font-heading text-3xl mb-4 tracking-wide text-cream-50">Artisan Pastries</h4>
+                    <p class="text-neutral-400 leading-relaxed">Handcrafted daily by our pastry chef. European
+                        techniques, local ingredients.</p>
+                    <div class="mt-6 text-coffee-300 font-medium">₹220</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Experience -->
+    <section id="experience" class="py-28 lg:py-40 bg-cream-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid md:grid-cols-2 gap-16 lg:gap-28 items-center">
+
+                <!-- Content -->
+                <div class="reveal-left">
+                    <span class="inline-block text-sm uppercase tracking-[0.2em] text-coffee-500 mb-4 font-medium">The
+                        Ambiance</span>
+
+                    <h3 class="font-heading text-4xl lg:text-6xl text-neutral-900 mb-10 tracking-wide">
+                        The Experience
+                    </h3>
+
+                    <div class="line-accent" style="margin: 0 0 2rem 0;"></div>
+
+                    <div class="space-y-6 text-neutral-600 text-lg leading-relaxed">
+                        <p>
+                            Step into a space designed for <strong class="text-neutral-900">contemplation</strong>.
+                            Minimalist interiors, natural light, and acoustic balance create an atmosphere of calm.
+                        </p>
+                        <p>
+                            Watch our baristas work with quiet <strong class="text-neutral-900">mastery</strong>. Every
+                            movement is deliberate. Every detail is considered.
+                        </p>
+                        <p>
+                            ETC Café is not a place to rush through. It is a place to be <strong
+                                class="text-neutral-900">present</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-neutral-200">
+                        <div class="text-center">
+                            <div class="font-heading text-4xl text-coffee-500 counter" data-target="12">0</div>
+                            <div class="text-sm text-neutral-500 uppercase tracking-wider mt-2">Origins</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-heading text-4xl text-coffee-500 counter" data-target="24">0</div>
+                            <div class="text-sm text-neutral-500 uppercase tracking-wider mt-2">Blends</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-heading text-4xl text-coffee-500 counter" data-target="3">0</div>
+                            <div class="text-sm text-neutral-500 uppercase tracking-wider mt-2">Continents</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="reveal-right image-reveal rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=1000&fit=crop&q=80"
+                        alt="Café interior experience" class="w-full h-[500px] md:h-[600px] object-cover hover-lift">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Presence -->
+    <section id="location" class="py-28 lg:py-40 bg-neutral-900 text-cream-50 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0"
+                style="background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920&fit=crop'); background-size: cover; filter: grayscale(100%);">
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center relative z-10">
+            <span
+                class="inline-block text-sm uppercase tracking-[0.2em] text-coffee-300 mb-4 fade-in-up font-medium">Find
+                Us</span>
+
+            <h3 class="font-heading text-4xl lg:text-6xl mb-14 tracking-wide fade-in-up delay-100">Visit Our Flagship
+            </h3>
+
+            <div class="line-accent fade-in-up delay-100"></div>
+
+            <!-- Address -->
+            <div class="mb-14 fade-in-up delay-200">
+                <div
+                    class="inline-block p-8 border border-neutral-700 rounded-lg glow-on-hover transition-all duration-500">
+                    <p class="text-2xl text-cream-100 mb-2 font-heading tracking-wide">Cubbonpet</p>
+                    <p class="text-xl text-neutral-300 mb-2">Bangalore, Karnataka</p>
+                    <p class="text-xl text-neutral-300">India 560002</p>
+                </div>
+            </div>
+
+            <!-- Hours -->
+            <div class="border-t border-neutral-700 pt-14 fade-in-up delay-300">
+                <h4 class="font-heading text-2xl mb-8 tracking-wide text-coffee-300">Hours of Operation</h4>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                    <div class="p-6 bg-neutral-800/50 rounded-lg hover:bg-neutral-800 transition-colors duration-300">
+                        <p class="text-neutral-400 text-sm uppercase tracking-wider mb-3">Monday – Friday</p>
+                        <p class="text-cream-100 text-xl font-heading">7:00 AM – 10:00 PM</p>
+                    </div>
+                    <div class="p-6 bg-neutral-800/50 rounded-lg hover:bg-neutral-800 transition-colors duration-300">
+                        <p class="text-neutral-400 text-sm uppercase tracking-wider mb-3">Saturday – Sunday</p>
+                        <p class="text-cream-100 text-xl font-heading">8:00 AM – 11:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="mt-14 fade-in-up delay-400">
+                <button id="get-directions-btn"
+                    class="magnetic btn-secondary inline-block px-14 py-5 border-2 border-cream-50 text-cream-50 text-sm uppercase tracking-widest hover:text-neutral-900 transition-colors duration-500 focus:outline-none interactive">
+                    Get Directions
+                </button>
+            </div>
+
+            <!-- Contact -->
+            <div class="mt-14 flex justify-center gap-8 fade-in-up delay-500">
+                <a href="tel:+919876543210"
+                    class="text-neutral-400 hover:text-coffee-300 transition-colors interactive">
+                    +91 98765 43210
+                </a>
+                <span class="text-neutral-600">|</span>
+                <a href="mailto:hello@etccafe.in"
+                    class="text-neutral-400 hover:text-coffee-300 transition-colors interactive">
+                    hello@etccafe.in
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-cream-50 border-t border-neutral-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+            <div class="flex flex-col md:flex-row justify-between items-center mb-14">
+
+                <!-- Logo -->
+                <div class="mb-10 md:mb-0 flex items-center space-x-3 interactive">
+                    <img src="ETC_logo_rounded.png" alt="ETC Café Logo"
+                        class="h-12 w-12 rounded-full opacity-80 hover:opacity-100 transition-opacity">
+                    <h5 class="font-heading text-2xl text-neutral-900 logo-text tracking-widest">ETC CAFÉ</h5>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="flex flex-wrap justify-center gap-10 mb-10 md:mb-0">
+                    <a href="#philosophy"
+                        class="text-sm uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors interactive">Philosophy</a>
+                    <a href="#offerings"
+                        class="text-sm uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors interactive">Offerings</a>
+                    <a href="#experience"
+                        class="text-sm uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors interactive">Experience</a>
+                    <a href="#location"
+                        class="text-sm uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors interactive">Visit
+                        Us</a>
+                </nav>
+
+                <!-- Social -->
+                <div class="flex items-center space-x-6">
+                    <a href="#"
+                        class="text-neutral-600 hover:text-coffee-500 transition-all duration-300 hover:-translate-y-1 interactive">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="#"
+                        class="text-neutral-600 hover:text-coffee-500 transition-all duration-300 hover:-translate-y-1 interactive">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="#"
+                        class="text-neutral-600 hover:text-coffee-500 transition-all duration-300 hover:-translate-y-1 interactive">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom -->
+            <div class="text-center text-sm text-neutral-500 pt-10 border-t border-neutral-200">
+                <p>&copy; 2026 ETC Café. All rights reserved.</p>
+                <div class="mt-4 flex justify-center gap-6 text-xs">
+                    <a href="#" class="hover:text-neutral-900 transition-colors interactive">Privacy Policy</a>
+                    <a href="#" class="hover:text-neutral-900 transition-colors interactive">Terms of Service</a>
+                    <a href="#" class="hover:text-neutral-900 transition-colors interactive">Careers</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
