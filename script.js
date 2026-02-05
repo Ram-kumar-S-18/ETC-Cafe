@@ -479,16 +479,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Add loaded class to body
   document.body.classList.add('loaded');
 
-  // Handle resize events
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      // Update mobile state on resize
-      window.location.reload();
-    }, 500);
-  });
-
   console.log('ETC Café Experience Initialized ✨');
   console.log(`Device: ${isTouchDevice ? 'Touch' : 'Desktop'}, Mobile: ${isMobile}`);
 });
